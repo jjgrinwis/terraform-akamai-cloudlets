@@ -22,7 +22,7 @@ data "akamai_contract" "contract" {
   group_name = var.group_name
 }
 
-# an example on how to create the rules to be used in the policy via data source
+# an example on how to create the rules to be used in the policy via a data source
 # use the .json to return json formatted rules from this data source.
 data "akamai_cloudlets_phased_release_match_rule" "to_deta" {
   match_rules {
@@ -55,11 +55,15 @@ resource "akamai_cloudlets_policy" "phased_release" {
   # you can use the rules via data source data.akamai_cloudlets_phased_release_match_rule.example.json
   # or use local json file. We used an output rule to show all the rules in json format and placed that in a file
   # so you are able to maintain the phased release rules outside of this terraform file.
-  match_rules = file("rules/rules.json")
-  #match_rules = data.akamai_cloudlets_phased_release_match_rule.to_deta.json
+  # 
+  # match_rules = file("rules/rules.tftpl")
+  # match_rules = data.akamai_cloudlets_phased_release_match_rule.to_deta.json
+  # 
+  # changed to template so using input vars to build template
+  match_rules = templatefile("rules/rules.tftpl", { to_deta_match_value = jsonencode(var.to_deta_match_value) })
 }
 
-# when using file() terraform is to quick so not activating new version
+# when using file() terraform is to quick so not activating the latest version
 # let's do a lookup after modifying it and use that version
 data "akamai_cloudlets_policy" "example" {
   policy_id = resource.akamai_cloudlets_policy.phased_release.id

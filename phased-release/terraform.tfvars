@@ -8,4 +8,4 @@ policy_name = "grinwis_pr"
 hostnames = ["api.grinwis.com"]
 
 # description match values for single match value
-to_deta_match_value = "/*/1010 /*/1011 /*/1012 /*/1013 /*/1014"
+to_deta_match_value = "/*/1010 /*/1011 /*/1012 /*/1013"

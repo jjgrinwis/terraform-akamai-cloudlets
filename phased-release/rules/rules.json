@@ -5,7 +5,7 @@
     "matches": [
       {
         "matchType": "path",
-        "matchValue": "/*/1011",
+        "matchValue": "/*/1011 /*/1012 /*/1013 /*/1014",
         "matchOperator": "contains",
         "caseSensitive": false,
         "negate": false
