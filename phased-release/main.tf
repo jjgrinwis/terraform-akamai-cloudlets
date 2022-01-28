@@ -56,10 +56,10 @@ resource "akamai_cloudlets_policy" "phased_release" {
   # or use local json file. We used an output rule to show all the rules in json format and placed that in a file
   # so you are able to maintain the phased release rules outside of this terraform file.
   # 
-  # match_rules = file("rules/rules.tftpl")
+  # match_rules = file("rules/rules.json")
   # match_rules = data.akamai_cloudlets_phased_release_match_rule.to_deta.json
   # 
-  # changed to template so using input vars to build template
+  # changed to templatefile() so we can use input vars to build json rules from template file
   match_rules = templatefile("rules/rules.tftpl", { to_deta_match_value = jsonencode(var.to_deta_match_value) })
 }
 
