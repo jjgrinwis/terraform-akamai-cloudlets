@@ -1,0 +1,19 @@
+[
+  {
+    "name": "to_deta",
+    "type": "cdMatchRule",
+    "matches": [
+      {
+        "matchType": "path",
+        "matchValue": ${to_deta_match_value},
+        "matchOperator": "contains",
+        "caseSensitive": false,
+        "negate": false
+      }
+    ],
+    "forwardSettings": {
+      "originId": "deta",
+      "percent": 100
+    }
+  }
+]
