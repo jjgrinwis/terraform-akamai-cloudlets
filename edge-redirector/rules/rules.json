@@ -1,0 +1,36 @@
+[
+    {
+        "type": "erMatchRule",
+        "name": "rule_2",
+        "matches": [
+            {
+                "matchValue": "NL DE",
+                "matchOperator": "equals",
+                "negate": false,
+                "caseSensitive": false,
+                "checkIPs": "CONNECTING_IP",
+                "matchType": "countrycode"
+            },
+            {
+                "matchValue": "/2akamai/",
+                "matchOperator": "equals",
+                "negate": false,
+                "caseSensitive": false,
+                "matchType": "path"
+            }
+        ],
+        "statusCode": 301,
+        "redirectURL": "https://www.akamai.com",
+        "useIncomingQueryString": false,
+        "useRelativeUrl": "none"
+    },
+    {
+        "type": "erMatchRule",
+        "name": "to_akamai",
+        "matchURL": "example.com",
+        "statusCode": 301,
+        "redirectURL": "https://www.akamai.com",
+        "useIncomingQueryString": false,
+        "useRelativeUrl": "none"
+    }
+]
